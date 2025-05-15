@@ -27,12 +27,4 @@ Oferecer uma plataforma acessível e segura para autoconhecimento
 
 Criar uma alternativa moderna aos diários tradicionais
 
-⚠️ Limitações e Considerações
-Projeto acadêmico com foco em usabilidade e simplicidade
-
-Planejado para até 50 usuários simultâneos em sua versão inicial
-
-Atenção à LGPD no tratamento de dados pessoais
-
-Algumas funcionalidades podem estar em fase de prototipação
 
