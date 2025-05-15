@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+📘 Moodly – Diário Virtual com Emojis
+Moodly é um diário emocional digital, desenvolvido como projeto acadêmico da disciplina de Engenharia de Software I. Ele permite que usuários registrem seus sentimentos e experiências diárias por meio de textos, emojis e tags, promovendo a autoexpressão e o bem-estar emocional de forma leve, intuitiva e moderna.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+✨ Funcionalidades
+Registro diário de emoções com emojis e anotações pessoais
 
-## Available Scripts
+Visualização do histórico de sentimentos em um calendário interativo
 
-In the project directory, you can run:
+Interface simples, atrativa e de fácil uso
 
-### `npm start`
+Ambiente privado e seguro para expressão pessoal
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+👥 Público-alvo
+Adolescentes e jovens adultos interessados em bem-estar emocional, organização pessoal ou autoconhecimento.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🚀 Tecnologias Utilizadas
+React.js (Front-end)
 
-### `npm test`
+HTML, CSS, JavaScript
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Firebase (ou outro backend leve - opcional)
 
-### `npm run build`
+📌 Objetivos do Projeto
+Facilitar o hábito de registrar emoções e reflexões diárias
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Oferecer uma plataforma acessível e segura para autoconhecimento
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Criar uma alternativa moderna aos diários tradicionais
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+⚠️ Limitações e Considerações
+Projeto acadêmico com foco em usabilidade e simplicidade
 
-### `npm run eject`
+Planejado para até 50 usuários simultâneos em sua versão inicial
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Atenção à LGPD no tratamento de dados pessoais
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Algumas funcionalidades podem estar em fase de prototipação
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
