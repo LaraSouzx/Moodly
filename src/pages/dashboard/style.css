@@ -7,6 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+   flex-direction: column;
+   gap: -60px;
 }
 
 .organicoum,
@@ -26,15 +28,6 @@
   right: 0;
 }
 
-.container-calendario {
-  position: relative;
-  z-index: 1;
-  background-color: white;
-  border-radius: 30px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  width: 550px;
-  height: 400px;
-}
 
 .mes{
   font-weight: 400;
@@ -43,4 +36,23 @@
   text-align: center;
   font-size: 22px;
   margin-top: 10px;
+}
+
+.add-emotion-button {
+  margin-top: 2px;
+  background-color: #F7CD42;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  width: 80px;
+  height: 48px;
+  font-size: 28px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+   z-index: 2;
+}
+
+.add-emotion-button:hover {
+  background-color: #F2D472;
 }

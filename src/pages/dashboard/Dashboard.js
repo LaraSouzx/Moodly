@@ -1,7 +1,15 @@
 import '../dashboard/style.css';
 import Calendario from '../../components/Calendario/Calendario'; 
+import { useNavigate } from "react-router-dom";
+
 
 export function Dashboard() {
+  const navigate = useNavigate();
+
+    const handleAddEmotion = () => {
+    navigate("/nova-emocao");
+  };
+
   return (
     <div className="svg-container">
        
@@ -36,8 +44,10 @@ export function Dashboard() {
           fill="#B8DE6F"
         />
       </svg>
-
-      <Calendario/>
+     
+        <Calendario/>
+        <button className="add-emotion-button" onClick={handleAddEmotion}>+</button>
+      
     </div>
   );
 }

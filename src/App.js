@@ -1,15 +1,19 @@
 import './App.css';
-import '../src/pages/dashboard/Dashboard';
 import { Dashboard } from '../src/pages/dashboard/Dashboard';
+import NovaEmocao from '../src/pages/novaEmocao/NovaEmocao'; // importe o novo componente
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      
-        <Dashboard/>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/nova-emocao" element={<NovaEmocao />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
