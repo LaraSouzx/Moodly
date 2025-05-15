@@ -1,0 +1,13 @@
+.svg-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  overflow-x: visible; /* evita corte horizontal */
+}
+
+.organicodois{
+    display: flex;
+    right: 100px,
+}

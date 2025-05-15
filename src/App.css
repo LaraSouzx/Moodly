@@ -1,0 +1,7 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* remove o scroll vertical e horizontal */
+  height: 100vh;     /* altura total da viewport */
+  width: 100vw;      /* largura total da viewport */
+}
