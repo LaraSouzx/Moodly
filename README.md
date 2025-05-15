@@ -10,15 +10,10 @@ Interface simples, atrativa e de fácil uso
 
 Ambiente privado e seguro para expressão pessoal
 
-👥 Público-alvo
-Adolescentes e jovens adultos interessados em bem-estar emocional, organização pessoal ou autoconhecimento.
-
 🚀 Tecnologias Utilizadas
 React.js (Front-end)
-
-HTML, CSS, JavaScript
-
-Firebase (ou outro backend leve - opcional)
+Css
+Firebase 
 
 📌 Objetivos do Projeto
 Facilitar o hábito de registrar emoções e reflexões diárias
