@@ -1,8 +1,10 @@
 import '../dashboard/style.css';
+import Calendario from '../../components/Calendario/Calendario'; 
 
 export function Dashboard() {
   return (
     <div className="svg-container">
+       
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"
@@ -18,7 +20,7 @@ export function Dashboard() {
           fill="#02C5C6"
         />
       </svg>
-
+        
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="700"
@@ -34,6 +36,8 @@ export function Dashboard() {
           fill="#B8DE6F"
         />
       </svg>
+
+      <Calendario/>
     </div>
   );
 }
