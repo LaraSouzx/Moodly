@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap');
+.nova-emocao-container{
+    font-family: 'Jost';
+}
+organicoum,
+.organicodois {
+  position: absolute;
+  z-index: 0;
+   /* reduz opacidade para não brigar com conteúdo */
+}
+
+.organicoum {
+  top: 0;
+  left: 0;
+}
+
+.organicodois {
+  bottom: 0;
+  right: 0;
+}
+
+.data-hoje {
+  position: relative;  /* ou absolute, se quiser posicionar no topo */
+  z-index: 3;
+  font-size: 22px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
