@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import {Menu } from '../../components/menu/Menu';
 import React, { useState } from 'react';
-import {SaudacaoUsuario} from '../../components/SaudacaoUsuario/SaudacaoUsuario';
+import { SaudacaoUsuario } from '../../components/SaudacaoUsuario/SaudacaoUsuario';
+
 
 
 export function Dashboard() {

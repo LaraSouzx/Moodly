@@ -1,68 +1,42 @@
-import React from "react";
-import "../Calendario/style.css";
-
-const daysOfWeek = ["seg", "ter", "qua", "qui", "sex", "sab", "dom"];
+import React, { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import "../Calendario/style.css"; // seu CSS customizado
 
 const Calendario = () => {
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth();
-  const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-  const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
-  const months = [
-  "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-  "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-];
-
-  const startDay = (firstDayOfMonth.getDay() + 6) % 7;
-  const totalDays = lastDayOfMonth.getDate();
-
-  const daysArray = [];
-
-  for (let i = 0; i < startDay; i++) {
-    daysArray.push(null);
-  }
-
-  for (let day = 1; day <= totalDays; day++) {
-    daysArray.push(day);
-  }
-
-  while (daysArray.length % 7 !== 0) {
-    daysArray.push(null);
-  }
-
-  const weeks = [];
-  for (let i = 0; i < daysArray.length; i += 7) {
-    weeks.push(daysArray.slice(i, i + 7));
-  }
+  const [date, setDate] = useState(new Date());
+  const nomeDoMes = date.toLocaleDateString("pt-BR", {
+    month: "long",
+  });
 
   return (
     <div className="calendar-container">
-      <div className="calendar">
-         <h4 className="month-title">{months[currentMonth]}</h4>
-        <div className="header">
-          {daysOfWeek.map((day, index) => (
-            <div key={index} className="day-header">
-              {day}
-            </div>
-          ))}
+
+        <div className="calendar-header">
+          <h4 className="month-title">{nomeDoMes}</h4>
         </div>
-        {weeks.map((week, rowIndex) => (
-  <div key={rowIndex} className="week-row">
-    {week.map((day, colIndex) => (
-      <div key={colIndex} className="day-cell">
-        {day ? (
-          <>
-            <div className="day-number">{day}</div>
-            <div className="day-circle"></div>
-          </>
-        ) : (
-          <div className="empty-cell"></div>
-        )}
-      </div>
-    ))}
-  </div>
-))}
+
+      <div className="calendar">
+        <Calendar
+          onChange={setDate}
+          value={date}
+          locale="pt-BR"
+          calendarType="iso8601"
+          formatShortWeekday={(locale, date) =>
+            date.toLocaleDateString("pt-BR", { weekday: "short" }).slice(0, 3)
+          }
+          tileContent={({ date, view }) =>
+            view === "month" ? (
+            <div className="tile-wrapper">
+              <div className="day-number">{date.getDate()}</div>
+              <div className="circle-border">
+                <div className="day-circle"></div>
+              </div>
+            </div>
+
+            ) : null
+          }
+        />
       </div>
     </div>
   );
