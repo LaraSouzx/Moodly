@@ -1,26 +1,40 @@
 .container-menu{
     width: 240px;
-    background: '#';
+    background: white;
     position: fixed;
     height: 100vh;
     padding: 0 30px;
     transition: all 1s;
     top: 0;
     left: 0;
-
 }
 
 ul{
-    padding: 0;
+    padding: 10vh;
 
 }
 
 ul li{
     list-style-type: none;
+    padding: 0.5vh;
 }
 
 ul li a{
     color:black;
     font-size: 16px;
     text-decoration: none;
+}
+
+.nav-link.active {
+    color: #000;
+    font-weight: bold; 
+    left: 0.6vh;
+     align-items: center; 
+    gap: 8px;     
+    display: flex;
+
+}
+
+.icon-historico{
+    margin-right: 0.4vh;
 }

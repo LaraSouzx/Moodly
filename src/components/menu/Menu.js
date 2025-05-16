@@ -1,17 +1,22 @@
 import '../menu/style.css';
+import { FaHistory, FaCog } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const Menu = () => {
-     return(
+    return (
         <div className="container-menu">
-            <ul class="nav flex-colum">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/historico">Histórico</a>
+            <ul className="nav flex-column">
+                <li className="nav-item">
+                    <Link className="nav-link active" to="/historico">
+                        <FaHistory className="icon-historico" /> Histórico 
+                    </Link>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link active" href="/configuracoes">Configurações</a>
+                <li className="nav-item">
+                    <Link className="nav-link active" to="/configuracoes">
+                        <FaCog className="icon-configuracoes" /> Configurações
+                    </Link>
                 </li>
-                
             </ul>
         </div>
     );
-}
+};
