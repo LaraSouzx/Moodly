@@ -1,9 +1,14 @@
 import '../dashboard/style.css';
 import Calendario from '../../components/Calendario/Calendario'; 
 import { useNavigate } from "react-router-dom";
+import { GiHamburgerMenu } from 'react-icons/gi';
+import {Menu } from '../../components/menu/Menu';
+import React, { useState } from 'react';
+
 
 
 export function Dashboard() {
+  const [showNav, setShowNav] = useState(false);
   const navigate = useNavigate();
 
     const handleAddEmotion = () => {
@@ -47,7 +52,12 @@ export function Dashboard() {
      
         <Calendario/>
         <button className="add-emotion-button" onClick={handleAddEmotion}>+</button>
-      
+
+
+        <buttom className="botao-menu">
+          <GiHamburgerMenu  size={28} onClick={() => setShowNav(!showNav)}/> 
+        </buttom>
+        {showNav && <Menu/>}
     </div>
   );
 }

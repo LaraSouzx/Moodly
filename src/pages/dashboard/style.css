@@ -56,3 +56,13 @@
 .add-emotion-button:hover {
   background-color: #F2D472;
 }
+
+.botao-menu{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
