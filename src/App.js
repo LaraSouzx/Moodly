@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Historico} from './pages/historico/Historico';
 import {Configuracoes} from '../src/pages/configuracoes/Configuracoes';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import  Login  from "../src/pages/logins/Login";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Login />} />
           <Route path="/nova-emocao" element={<NovaEmocao />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/configuracoes" element={<Configuracoes />} />

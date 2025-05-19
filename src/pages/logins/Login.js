@@ -1,5 +1,7 @@
 import { auth } from "../../firebaseConfig";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth/web-extension";
+import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import '../logins/style.css';
+import logo from '../../assets/logo.png';
 
 function Login(){
     const loginGoogle = async () => {
@@ -10,16 +12,22 @@ function Login(){
             const result = await signInWithPopup(auth, provider);
             console.log("Usuário logado: ", result.user);
         } catch(error){
-            console.error("erro ao logar: ", erro);
+            console.error("erro ao logar: ", error);
         }
     }
+
+    return(
+    <div className="login-container">
+        <div className="fundo-verde">
+             <img src={logo} alt="Logo" className="logo-img"/>
+
+             <h3 className="frase">Registre seu dia, entenda suas emoções, <br/> viva com mais leveza.</h3>
+        </div>
+        <h1> teste</h1>
+    </div>
+    );
 }
 
-return(
-    <div>
-        <h2> Login </h2>
-        <button onClick={loginGoogle}>Entrar com google</button>
-    </div>
-);
+
 
 export default Login;
