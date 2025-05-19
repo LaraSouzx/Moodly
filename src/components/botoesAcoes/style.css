@@ -1,0 +1,34 @@
+.botoes-acoes {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+  z-index: 5;
+  gap: 40vh;
+}
+
+.botao-confirmar,
+.botao-cancelar {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.botao-confirmar {
+  background-color: #b6e46c;
+  color: #ffffff;
+}
+
+.botao-cancelar {
+  background-color: #f44336;
+  color: #ffffff;
+}

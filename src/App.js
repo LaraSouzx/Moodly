@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Historico} from './pages/historico/Historico';
 import {Configuracoes} from '../src/pages/configuracoes/Configuracoes';
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 
 function App() {
   return (

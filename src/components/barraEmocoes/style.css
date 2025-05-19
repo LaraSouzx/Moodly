@@ -1,0 +1,35 @@
+.barra-emocoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  max-width: 50%;
+  z-index: 4;
+  position: relative;
+  top: 10vh;
+}
+
+.emoji-botao {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emoji-botao:hover {
+  transform: scale(1.8);
+}
+
+.emoji {
+  display: inline-block;
+}
+
+.emoji-botao.selecionado {
+  transform: scale(2);
+}

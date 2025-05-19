@@ -1,16 +1,19 @@
-.container-menu{
-    width: 240px;
-    background: white;
-    position: fixed;
-    height: 100vh;
-    padding: 0 30px;
-    transition: all 1s;
-    top: 0;
-    left: 0;
+.container-menu {
+  width: 240px;
+  background: white;
+  position: fixed;
+  height: 100vh;
+  padding: 0 30px;
+  transition: all 1s;
+  top: 0;
+  left: 0;
+  z-index: 3;
 }
+
 
 ul{
     padding: 10vh;
+    
 
 }
 
@@ -37,4 +40,14 @@ ul li a{
 
 .icon-historico{
     margin-right: 0.4vh;
+}
+
+.botao-menu{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 4;
 }

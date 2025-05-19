@@ -1,17 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import "../novaEmocao/style.css";
+import BarraEmocoes from "../../components/barraEmocoes/BarraEmocoes";
+import CampoAnotacao from "../../components/campoAnotacao/Anotacao";
+import BotoesAcoes from "../../components/botoesAcoes/BotoesAcao";
+import {Menu } from '../../components/menu/Menu';
+import { useNavigate } from "react-router-dom";
+import { GiHamburgerMenu } from 'react-icons/gi';
+import BotaoMenu from "../../components/menu/BotaoMenu";
+
 
 const NovaEmocao = () => {
+   const [emocaoSelecionada, setEmocaoSelecionada] = useState(null);
+    const [anotacoes, setAnotacoes] = useState("");
+    const [showNav, setShowNav] = useState(false);
+    const navigate = useNavigate();
+      
+    const handleAddEmotion = () => {
+    navigate("/nova-emocao");
+  }
+
  const hoje = new Date().toLocaleDateString("pt-BR", {
   day: "2-digit",
   month: "2-digit",
   year: "2-digit",
 });
 
+ const handleConfirmar = () => {
+    console.log("Emoção:", emocaoSelecionada);
+    console.log("Anotações:", anotacoes);
+    // aqui pode enviar para API, localStorage, etc.
+  };
+
+  const handleCancelar = () => {
+    setEmocaoSelecionada(null);
+    setAnotacoes("");
+  };
+
+ const handleSelecionar = (emocao) => {
+    setEmocaoSelecionada(emocao);
+    console.log("Emoção selecionada:", emocao);
+  };
+
+
   return (
    <div className="nova-emocao-container">
     <h2 className="data-hoje">{hoje}</h2>
-    
+    <h3 className="hoje-sinto"> Hoje eu me sinto...</h3>
+
+     <BarraEmocoes
+        onSelecionar={setEmocaoSelecionada}
+        selecionado={emocaoSelecionada}
+      />
+     <CampoAnotacao value={anotacoes} onChange={(e) => setAnotacoes(e.target.value)} />
+
+      <BotoesAcoes
+        onConfirmar={handleConfirmar}
+        onCancelar={handleCancelar}
+      />
+
+       <BotaoMenu onClick={() => setShowNav(!showNav)} />
+       {showNav && <Menu/>}
      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"

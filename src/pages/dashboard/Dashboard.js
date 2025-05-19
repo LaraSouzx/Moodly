@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import { SaudacaoUsuario } from '../../components/SaudacaoUsuario/SaudacaoUsuario';
 
 
-
 export function Dashboard() {
   const [showNav, setShowNav] = useState(false);
   const navigate = useNavigate();
@@ -18,8 +17,7 @@ export function Dashboard() {
 
   return (
     <div className="svg-container">
-       
-      <svg
+       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"
         height="850"
