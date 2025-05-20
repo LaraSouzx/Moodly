@@ -1,5 +1,5 @@
-// src/components/LoginForm.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../formulario/style.css';
 
 const LoginForm = () => {
@@ -39,8 +39,8 @@ const LoginForm = () => {
         </div>
 
         <div className="login-footer">
-          <span className="text-muted">Você já tem uma conta? </span>
-          <span className="text-link">Entre agora</span>
+          <span className="text-muted">Ainda não tem uma conta? </span>
+          <Link to="/cadastro" className="text-link">Crie agora</Link>
         </div>
       </div>
     </div>

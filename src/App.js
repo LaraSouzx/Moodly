@@ -8,7 +8,7 @@ import { Historico} from './pages/historico/Historico';
 import {Configuracoes} from '../src/pages/configuracoes/Configuracoes';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import  Login  from "../src/pages/logins/Login";
-
+import Cadastro from '../src/pages/cadastro/Cadastro';
 
 function App() {
   return (
@@ -19,6 +19,8 @@ function App() {
           <Route path="/nova-emocao" element={<NovaEmocao />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/configuracoes" element={<Configuracoes />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+
         </Routes>
       </div>
     </Router>
