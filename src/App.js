@@ -20,6 +20,7 @@ function App() {
           <Route path="/historico" element={<Historico />} />
           <Route path="/configuracoes" element={<Configuracoes />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path='/dashboard' element={<Dashboard/>}/>
 
         </Routes>
       </div>

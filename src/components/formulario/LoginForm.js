@@ -1,8 +1,28 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import '../formulario/style.css';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebaseConfig';
 
 const LoginForm = () => {
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const [erro, setErro] = useState("");
+    const [sucesso, setSucesso] = useState("");
+    const navigate = useNavigate();
+
+    const handleLogin = async () =>{
+      try{
+        await signInWithEmailAndPassword(auth, email, senha);
+        navigate('/dashboard');
+        setSucesso("Usuário cadastrado com sucesso!");
+      }catch(error){
+        setErro("E-mail ou senha inválidos.");
+        console.error(error);
+      }
+    }
+
   return (
     <div className="login-wrapper">
       <div className="login-box">
@@ -14,16 +34,27 @@ const LoginForm = () => {
 
           <div className="form-group">
             <label>E-mail</label>
-            <input type="email" placeholder="Digite seu e-mail" />
+            <input type="email" 
+              placeholder="Digite seu e-mail" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <div className="form-group">
             <label>Senha</label>
-            <input type="password" placeholder="Digite sua senha" />
+            <input type="password"
+              placeholder="Digite sua senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
           </div>
         </div>
 
-        <button className="signup-button">Entre</button>
+                {erro && <p style={{ color: 'red' }}>{erro}</p>}
+                {sucesso && <p style={{ color: 'green' }}>{sucesso}</p>}
+
+        <button className="signup-button" onClick={handleLogin}>Entre</button>
 
         <div className="divider">
           <hr />
