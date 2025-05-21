@@ -1,5 +1,6 @@
 import {initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 //configurações do firebase
 const firebaseConfig = {
@@ -12,7 +13,8 @@ const firebaseConfig = {
 };
 
 //inicialiar o firebase
-const app = initializeApp(firebaseConfig);
+ export const app = initializeApp(firebaseConfig);
  export const googleProvider = new GoogleAuthProvider();
 //gerencia a autenticação de usuarios no firebase ( login, logout, estado do usuario)
 export const auth = getAuth(app);
+export const db=getFirestore(app);

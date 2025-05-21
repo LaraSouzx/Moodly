@@ -7,6 +7,10 @@ import {Menu } from '../../components/menu/Menu';
 import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import BotaoMenu from "../../components/menu/BotaoMenu";
+import { db } from "../../firebaseConfig";
+import { collection, addDoc, doc } from "firebase/firestore";
+import { auth } from "../../firebaseConfig";
+
 
 
 const NovaEmocao = () => {
@@ -25,11 +29,38 @@ const NovaEmocao = () => {
   year: "2-digit",
 });
 
- const handleConfirmar = () => {
-    console.log("Emoção:", emocaoSelecionada);
-    console.log("Anotações:", anotacoes);
-    // aqui pode enviar para API, localStorage, etc.
-  };
+ const handleConfirmar = async () => {
+     if (!emocaoSelecionada) {
+      alert("Selecione uma emoção antes de confirmar.");
+      return;
+    }
+     const user = auth.currentUser;
+      if (!user) {
+        alert("Usuário não está logado.");
+        return;
+      }
+    
+      try{
+        //referencia ao doc do usuario
+        const useRef = doc(db, "usuarios", user.uid);
+
+        //referencia a subcolecao emocções dentro desse documento
+        const emocoesRef = collection(useRef, "emocoes");
+        
+        //add uma nova emocao na subcolecao
+        await addDoc(emocoesRef, {
+          emocao: emocaoSelecionada,
+          anotacoes: anotacoes,
+          data: new Date()
+        });
+         alert("Emoção registrada com sucesso!");
+        setEmocaoSelecionada(null);
+        setAnotacoes("");
+      }catch (error) {
+        console.error("Erro ao salvar emoção:", error);
+        alert("Erro ao salvar emoção. Tente novamente.");
+      }
+};
 
   const handleCancelar = () => {
     setEmocaoSelecionada(null);
