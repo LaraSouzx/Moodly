@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
+import { signInWithPopup } from 'firebase/auth';
+import { googleProvider } from '../../firebaseConfig';
+import googleIcon from '../../assets/icon-google.png';
+
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -22,6 +26,16 @@ const LoginForm = () => {
         console.error(error);
       }
     }
+
+    const handleGoogleLogin = async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+        navigate('/dashboard');
+      } catch (error) {
+        console.error('Erro ao fazer login com Google:', error);
+        setErro('Falha no login com Google');
+      }
+    };
 
   return (
     <div className="login-wrapper">
@@ -63,10 +77,10 @@ const LoginForm = () => {
         </div>
 
         <div className="social-login">
-          <div className="social-icon">
-            {/* Simulação de ícone social */}
-            <div className="icon-placeholder" />
-          </div>
+          <button className="google-login-button" onClick={handleGoogleLogin}>
+            <img src= {googleIcon} alt="Google" style={{ width: 20, marginRight: 8 }} />
+            Entrar com Google
+          </button>
         </div>
 
         <div className="login-footer">

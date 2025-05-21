@@ -49,20 +49,6 @@ export default function CadastroForm(){
 
                 {erro && <p style={{ color: 'red' }}>{erro}</p>}
                 {sucesso && <p style={{ color: 'green' }}>{sucesso}</p>}
-
-
-               <div className="divider">
-                 <hr />
-                 <span>ou faça login com outras contas</span>
-                 <hr />
-               </div>
-       
-               <div className="social-login">
-                 <div className="social-icon">
-                   {/* Simulação de ícone social */}
-                   <div className="icon-placeholder" />
-                 </div>
-               </div>
        
                <div className="login-footer">
                  <span className="text-muted">Já tem uma conta? </span>

@@ -1,0 +1,27 @@
+.config-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  top: 50px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+.logout-icon {
+  font-size: 20px;
+}
+
+
+
