@@ -1,147 +1,165 @@
 /* Importa a fonte Jost do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
 
-/* Container externo do calendário */
+/* 📦 Container externo do calendário */
 .calendar-container {
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 16px;
-  width: 60vh;
-  height: 65vh;
-  max-width: 600px;
-  margin: 40px auto;
-  font-family: 'Jost', sans-serif;
-    position: relative;      /* <- permite usar z-index */
-  z-index: 10;    
-  margin-top: 0px; 
+  background-color: white;                /* fundo branco */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* sombra suave */
+  padding: 20px;                          /* espaçamento interno */
+  border-radius: 16px;                    /* bordas arredondadas */
+  width: 60vh;                            /* largura proporcional à altura da tela */
+  height: 65vh;                           /* altura proporcional à tela */
+  max-width: 600px;                       /* limite máximo de largura */
+  margin: 40px auto;                      /* centraliza horizontalmente */
+  font-family: 'Jost', sans-serif;        /* aplica a fonte Jost */
+  position: relative;                     /* necessário para usar z-index */
+  z-index: 10;                            /* camada superior */
+  margin-top: 0px;                        /* sem margem no topo */
 }
 
-/* Wrapper do componente de calendário */
+/* 🔲 Wrapper do calendário React */
 .calendar {
-  width: 100%;
+  width: 100%;                            /* ocupa toda a largura do container */
 }
 
-/* Calendário base (nativo do react-calendar) */
+/* 🧩 Estiliza o componente react-calendar */
 .react-calendar {
-  width: 100%;
-  border: none;
-  background: none;
-  z-index: 3;
-  font-family: 'Jost', sans-serif;
+  width: 100%;                            /* largura total */
+  border: none;                           /* sem borda */
+  background: none;                       /* sem fundo */
+  z-index: 3;                             /* camada intermediária */
+  font-family: 'Jost', sans-serif;        /* aplica a fonte */
 }
 
-/* Layout em grid dos dias do mês */
+/* 📅 Grid dos dias do mês */
 .react-calendar__month-view__days {
-  display: grid !important;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 12px;
-  margin-top: 20px;
+  display: grid !important;               /* força grid */
+  grid-template-columns: repeat(7, 1fr);  /* 7 colunas (dias da semana) */
+  gap: 12px;                              /* espaçamento entre células */
+  margin-top: 20px;                       /* espaçamento superior */
 }
 
-/* Cabeçalhos dos dias da semana (seg, ter...) */
+/* 🗓️ Cabeçalhos dos dias da semana (seg, ter, qua...) */
 .react-calendar__month-view__weekdays {
-  text-align: center;
-  text-transform: lowercase;
-  font-size: 16px;
-  color: #999;
-  font-weight: 500;
+  text-align: center;                     /* centraliza o texto */
+  text-transform: lowercase;              /* dias em minúsculas */
+  font-size: 16px;                        /* tamanho da fonte */
+  color: #999;                            /* cinza claro */
+  font-weight: 500;                       /* peso da fonte */
 }
 
 .react-calendar__month-view__weekdays__weekday {
-  padding: 0 0;
+  padding: 0 0;                           /* sem padding horizontal */
 }
 
-/* Oculta a navegação do calendário (setas) */
+/* ❌ Oculta as setas de navegação do calendário */
 .react-calendar__navigation {
   display: none;
 }
 
-/* Oculta os números padrões do react-calendar */
+/* ❌ Oculta os números padrões (abbr) dentro das células do calendário */
 .react-calendar__tile abbr {
   display: none;
 }
 
-/* Célula do calendário */
+/* 🔘 Célula individual de um dia */
 .react-calendar__tile {
-  background: none;
-  text-align: center;
-  height: 60px;
-  padding: 0;
+  background: none;                       /* sem fundo */
+  text-align: center;                     /* centraliza conteúdo */
+  height: 60px;                           /* altura da célula */
+  padding: 0;                             /* sem padding */
 }
 
-/* Dia selecionado */
+/* 📌 Dia selecionado (clicado) */
 .react-calendar__tile--active {
-   background: none !important;
-  color: inherit;
+  background: none !important;            /* remove fundo padrão */
+  color: inherit;                         /* mantém cor original do texto */
 }
 
-/* Layout customizado dos dias */
+/* 📦 Envolve os elementos de cada célula (número e bolinha) */
 .tile-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  flex-direction: column;                /* empilha número e bolinha na vertical */
+  align-items: center;                   /* centraliza horizontalmente */
+  justify-content: center;              /* centraliza verticalmente */
+  height: 100%;                          /* ocupa toda a célula */
+  gap: 2px;                              /* espaço entre número e círculo */
 }
 
-/* Número do dia (em cima) */
+/* 🔢 Número do dia */
 .day-number {
-  font-size: 15px;
-  font-weight: 400;
-  color: #333;
+  font-size: 0.75rem;                    /* tamanho pequeno */
+  font-weight: bold;                     /* negrito */
+  color: #333;                           /* cinza escuro */
 }
 
-/* Bolinha cinza abaixo do número */
+/* ⚪ Círculo cinza do dia */
 .day-circle {
   width: 40px;
   height: 40px;
-  background-color: #ccc;
-  border-radius: 50%;
+  background-color: #ccc;               /* cinza claro */
+  border-radius: 50%;                   /* forma circular */
 }
 
-
-/* Contorno da bolinha com espaço interno */
+/* 🟢 Contorno (borda) do círculo */
 .circle-border {
-  padding: 4px;
-  border: 4px solid transparent;
-  border-radius: 50%;
-  transition: border 0.2s ease;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #ccc;               /* borda cinza */
+  border-radius: 50%;                   /* forma circular */
+  display: flex;
+  justify-content: center;             /* centraliza o conteúdo */
+  align-items: center;
 }
 
+/* ✅ Dia selecionado com borda destacada (verde) */
 .react-calendar__tile--active .circle-border {
-  border-color: #02C5C6; /* só adiciona a borda verde no dia ativo */
+  border-color: #02C5C6;             /* borda azul-esverdeada */
+   border-width: 15px;
 }
 
-
-/* Hover em qualquer outro dia – borda preta */
+/* 🖱️ Hover em outros dias */
 .react-calendar__tile:hover .circle-border {
-  border-color: grey; /* borda preta */
+  border-color: grey;                   /* borda cinza escura ao passar o mouse */
 }
 
+/* 🧩 Preenche o círculo com fundo claro */
 .day-circle {
-  width: 24px;
-  height: 24px;
-  background-color: #ccc;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* 📅 Cabeçalho com o nome do mês */
 .calendar-header {
   text-align: center;
   margin-bottom: 8px;
 }
 
+/* 🏷️ Nome do mês (Maio, Junho, etc) */
 .month-title {
   font-size: 20px;
   font-weight: 600;
   color: #333;
-  text-transform: capitalize;
-
+  text-transform: capitalize;           /* primeira letra maiúscula */
 }
 
+/* Força fundo transparente nos tiles */
 .react-calendar__tile {
   background: none !important;
 }
 
+/* Remove qualquer fundo ao passar o mouse */
 .react-calendar__tile:hover {
   background: none !important;
+}
+
+/* 😍 Emoji da emoção do dia */
+.emoji-dia {
+  font-size: 30px;                      /* tamanho do emoji */
+  line-height: 1;                       /* reduz espaçamento vertical */
 }

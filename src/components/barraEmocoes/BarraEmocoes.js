@@ -1,7 +1,7 @@
 import React from "react";
 import "../barraEmocoes/style.css";
 
-const EMOCOES = [
+export const EMOCOES = [
   { emoji: "😊", nome: "feliz" },
   { emoji: "😔", nome: "triste" },
   { emoji: "😡", nome: "raiva" },
