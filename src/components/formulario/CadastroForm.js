@@ -5,25 +5,39 @@ import './cadastro.css';
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
+import { db } from "../../firebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
+
 
 export default function CadastroForm(){
   const [email, setEmail] = useState("");
   const [senha, setSenha] =useState("");
+  const [nome, setNome] = useState("");
   const [erro, setErro] = useState("");
   const [sucesso, setSucesso] = useState("");
 
-  const handleCadastro = async ()=> {
-    setErro("");
-    setSucesso("");
-    try{
-      await createUserWithEmailAndPassword(auth, email, senha);
-      setSucesso("Usuário cadastrado com sucesso!");
-      setEmail("");
-      setSenha("")
-    }catch(error){
-      setErro(error.message);
-    }
-  };
+  const handleCadastro = async () => {
+      setErro("");
+      setSucesso("");
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+        const user = userCredential.user;
+
+        // Salvar o nome no Firestore
+        await setDoc(doc(db, "usuarios", user.uid), {
+          nome: nome,
+          email: email
+        });
+
+        setSucesso("Usuário cadastrado com sucesso!");
+        setEmail("");
+        setSenha("");
+        setNome(""); // limpa o nome também
+      } catch (error) {
+        setErro(error.message);
+      }
+};
+
 
     return(
         <div className="cadastro-wrapper">
@@ -34,6 +48,16 @@ export default function CadastroForm(){
                    <p>É de graça e fácil</p>
                  </div>
        
+                <div className="form-group">
+                  <label>Nome</label>
+                  <input
+                    type="text"
+                    placeholder="Digite seu nome"
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                  />
+                </div>
+
                  <div className="form-group">
                    <label>E-mail</label>
                    <input type="email" placeholder="Digite um e-mail" value={email} onChange={(e) => setEmail(e.target.value)} />

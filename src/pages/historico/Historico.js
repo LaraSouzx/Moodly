@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CalendarioHistorico from '../../components/Calendario/HistoricoCalendario'; 
 import '../historico/style.css';
+import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
 
 export function Historico(){
      const [showNav, setShowNav] = useState(false);
@@ -13,10 +14,9 @@ export function Historico(){
         <div className="historico-container">
 
             <h2 className="nome-pagina">Histórico</h2>
+            <BotaoVoltar />
              <CalendarioHistorico/>
 
-             <BotaoMenu onClick={() => setShowNav(!showNav)} />
-            {showNav && <Menu/>}
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="750"

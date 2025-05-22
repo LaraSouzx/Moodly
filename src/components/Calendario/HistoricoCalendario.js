@@ -42,7 +42,7 @@ const CalendarioHistorico = () => {
             id: doc.id,
             data: formatarData(data), // Formata a data
             emocao: doc.data().emocao,
-            texto: doc.data().texto || "", // Texto opcional
+            anotacoes: doc.data().anotacoes || "", // Texto opcional
           };
         });
         setEmocoes(dados); // Atualiza o estado com as emoções

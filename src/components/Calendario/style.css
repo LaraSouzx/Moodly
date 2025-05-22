@@ -10,11 +10,11 @@
   width: 60vh;                            /* largura proporcional à altura da tela */
   height: 65vh;                           /* altura proporcional à tela */
   max-width: 600px;                       /* limite máximo de largura */
-  margin: 40px auto;                      /* centraliza horizontalmente */
+                       /* centraliza horizontalmente */
   font-family: 'Jost', sans-serif;        /* aplica a fonte Jost */
   position: relative;                     /* necessário para usar z-index */
   z-index: 10;                            /* camada superior */
-  margin-top: 0px;                        /* sem margem no topo */
+  justify-content: flex-start;            /* sem margem no topo */
 }
 
 /* 🔲 Wrapper do calendário React */
@@ -138,6 +138,9 @@
 .calendar-header {
   text-align: center;
   margin-bottom: 8px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 🏷️ Nome do mês (Maio, Junho, etc) */
@@ -146,6 +149,8 @@
   font-weight: 600;
   color: #333;
   text-transform: capitalize;           /* primeira letra maiúscula */
+  width: 100%;
+  text-align: center;
 }
 
 /* Força fundo transparente nos tiles */

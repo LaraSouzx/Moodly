@@ -1,19 +1,28 @@
-import {Menu } from '../../components/menu/Menu';
 import React, { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import LogoutButton from '../../components/formulario/LogonButton';
+import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
+import { Menu } from '../../components/menu/Menu';
 import '../../pages/configuracoes/style.css';
 
-export function Configuracoes(){
-    return(
-        <div className="svg-container">
-            <div className="overlap-group">
-                <div className="overlap-group">
-                    <LogoutButton />
-                </div>
-                <div className="title">Configurações</div>
-            </div>
-            <svg
+export function Configuracoes() {
+  const [showNav, setShowNav] = useState(false);
+
+  return (
+    <div className="svg-container">
+      <BotaoVoltar />
+
+      <div className="config-conteudo">
+        <h2 className="titulo-config">Configurações</h2>
+
+        <div className="logout-container">
+          <LogoutButton />
+        </div>
+      </div>
+
+      {showNav && <Menu />}
+
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"
         height="850"
@@ -28,7 +37,7 @@ export function Configuracoes(){
           fill="#02C5C6"
         />
       </svg>
-        
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="700"
@@ -44,6 +53,6 @@ export function Configuracoes(){
           fill="#B8DE6F"
         />
       </svg>
-        </div>
-    );
+    </div>
+  );
 }

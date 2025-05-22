@@ -125,3 +125,27 @@
   color: #425466;
   cursor: pointer;
 }
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sucesso-alert {
+  background-color: #d4f8e8;
+  color: #2b7a4b;
+  border: 1px solid #98e4b0;
+}
+
+.erro-alert {
+  background-color: #ffe5e5;
+  color: #c0392b;
+  border: 1px solid #f5a7a7;
+}
