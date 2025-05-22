@@ -2,22 +2,36 @@ import '../dashboard/style.css';
 import Calendario from '../../components/Calendario/Calendario'; 
 import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from 'react-icons/gi';
-import {Menu } from '../../components/menu/Menu';
+import { Menu } from '../../components/menu/Menu';
 import React, { useState } from 'react';
 import { SaudacaoUsuario } from '../../components/SaudacaoUsuario/SaudacaoUsuario';
 
-
+/**
+ * Componente Dashboard
+ *
+ * Tela principal do sistema após login, que inclui:
+ * - Saudação personalizada do usuário
+ * - Calendário com emoções registradas
+ * - Botão para adicionar nova emoção
+ * - Menu lateral acessível via botão hambúrguer
+ * - Elementos visuais decorativos em SVG
+ *
+ * @returns {JSX.Element} Interface da área principal do usuário logado
+ */
 export function Dashboard() {
-  const [showNav, setShowNav] = useState(false);
-  const navigate = useNavigate();
+  const [showNav, setShowNav] = useState(false); // Controle da visibilidade do menu lateral
+  const navigate = useNavigate(); // Hook de navegação
 
-    const handleAddEmotion = () => {
+  // Redireciona para a tela de adicionar nova emoção
+  const handleAddEmotion = () => {
     navigate("/nova-emocao");
   };
 
   return (
     <div className="svg-container">
-       <svg
+      
+      {/* SVG decorativo azul */}
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"
         height="850"
@@ -32,7 +46,8 @@ export function Dashboard() {
           fill="#02C5C6"
         />
       </svg>
-        
+      
+      {/* SVG decorativo verde */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="700"
@@ -49,15 +64,22 @@ export function Dashboard() {
         />
       </svg>
      
-        <SaudacaoUsuario nome="Lara" />     
-        <Calendario/>
-        <button className="add-emotion-button" onClick={handleAddEmotion}>+</button>
+      {/* Saudação com nome do usuário */}
+      <SaudacaoUsuario />
 
+      {/* Calendário com dados das emoções */}
+      <Calendario />
 
-        <buttom className="botao-menu">
-          <GiHamburgerMenu  size={28} onClick={() => setShowNav(!showNav)}/> 
-        </buttom>
-        {showNav && <Menu/>}
+      {/* Botão para adicionar nova emoção */}
+      <button className="add-emotion-button" onClick={handleAddEmotion}>+</button>
+
+      {/* Botão de menu (hambúrguer) para mostrar/ocultar o menu lateral */}
+      <buttom className="botao-menu">
+        <GiHamburgerMenu size={28} onClick={() => setShowNav(!showNav)} />
+      </buttom>
+
+      {/* Exibição condicional do menu lateral */}
+      {showNav && <Menu />}
     </div>
   );
 }

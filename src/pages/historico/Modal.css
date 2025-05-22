@@ -8,11 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 30px 25px;
   border-radius: 16px;
   max-width: 420px;
@@ -21,6 +21,8 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
+  z-index: 10000;
+  opacity: 1;
 }
 
 @keyframes fadeIn {

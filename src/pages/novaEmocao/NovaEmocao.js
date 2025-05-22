@@ -3,125 +3,149 @@ import "../novaEmocao/style.css";
 import BarraEmocoes from "../../components/barraEmocoes/BarraEmocoes";
 import CampoAnotacao from "../../components/campoAnotacao/Anotacao";
 import BotoesAcoes from "../../components/botoesAcoes/BotoesAcao";
-import {Menu } from '../../components/menu/Menu';
+import { Menu } from '../../components/menu/Menu';
 import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import BotaoMenu from "../../components/menu/BotaoMenu";
-import { db } from "../../firebaseConfig";
-import { collection, addDoc, doc } from "firebase/firestore";
-import { getDocs, setDoc } from "firebase/firestore";
-import { auth } from "../../firebaseConfig";
+import { db, auth } from "../../firebaseConfig";
+import { collection, addDoc, doc, getDocs, setDoc } from "firebase/firestore";
 import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
 
-
+/**
+ * Componente NovaEmocao
+ *
+ * Tela onde o usuário pode registrar sua emoção do dia e anotar como se sente.
+ * - Permite registrar ou atualizar uma emoção no Firebase
+ * - Integração com Firebase Auth e Firestore
+ * - Exibe mensagens de sucesso ou erro
+ *
+ * @returns {JSX.Element} Tela de nova emoção
+ */
 const NovaEmocao = () => {
-   const [emocaoSelecionada, setEmocaoSelecionada] = useState(null);
-    const [anotacoes, setAnotacoes] = useState("");
-    const [showNav, setShowNav] = useState(false);
-    const [mensagemErro, setMensagemErro] = useState("");
-    const [mensagemSucesso, setMensagemSucesso] = useState("");
-    const navigate = useNavigate();
-      
-    const handleAddEmotion = () => {
-    navigate("/nova-emocao");
-  }
+  // Estados da emoção selecionada, anotação, navegação e mensagens
+  const [emocaoSelecionada, setEmocaoSelecionada] = useState(null);
+  const [anotacoes, setAnotacoes] = useState("");
+  const [showNav, setShowNav] = useState(false);
+  const [mensagemErro, setMensagemErro] = useState("");
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
+  const navigate = useNavigate();
 
- const hoje = new Date().toLocaleDateString("pt-BR", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "2-digit",
-});
+  // Data formatada de hoje (exibição)
+  const hoje = new Date().toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+  });
 
- const handleConfirmar = async () => {
-     if (!emocaoSelecionada) {
+  /**
+   * Função executada ao confirmar o registro da emoção
+   * - Verifica se o usuário está logado
+   * - Verifica se já existe uma emoção registrada para hoje
+   * - Se sim, atualiza o registro. Se não, cria um novo
+   */
+  const handleConfirmar = async () => {
+    if (!emocaoSelecionada) {
       alert("Selecione uma emoção antes de confirmar.");
       return;
     }
-     const user = auth.currentUser;
-      if (!user) {
-        alert("Usuário não está logado.");
-        return;
+
+    const user = auth.currentUser;
+    if (!user) {
+      alert("Usuário não está logado.");
+      return;
+    }
+
+    try {
+      const userRef = doc(db, "usuarios", user.uid);
+      const emocoesRef = collection(userRef, "emocoes");
+
+      const snapshot = await getDocs(emocoesRef);
+
+      // Data no formato yyyy-mm-dd
+      const dataHoje = new Date().toISOString().split("T")[0];
+
+      // Verifica se já existe uma emoção registrada para hoje
+      const docExistente = snapshot.docs.find(doc => {
+        const dataRegistro = doc.data().data.toDate().toISOString().split("T")[0];
+        return dataRegistro === dataHoje;
+      });
+
+      if (docExistente) {
+        // Atualiza o documento existente
+        const docRef = doc(db, "usuarios", user.uid, "emocoes", docExistente.id);
+        await setDoc(docRef, {
+          emocao: emocaoSelecionada,
+          anotacoes: anotacoes,
+          data: new Date()
+        });
+        setMensagemSucesso("Emoção atualizada com sucesso!");
+      } else {
+        // Cria novo documento
+        await addDoc(emocoesRef, {
+          emocao: emocaoSelecionada,
+          anotacoes: anotacoes,
+          data: new Date()
+        });
+        setMensagemSucesso("Emoção registrada com sucesso!");
       }
-    
-     try {
-  const userRef = doc(db, "usuarios", user.uid);
-  const emocoesRef = collection(userRef, "emocoes");
 
-  // Obter todos os registros de emoção do usuário
-  const snapshot = await getDocs(emocoesRef);
+      // Limpa mensagens e campos
+      setMensagemErro("");
+      setEmocaoSelecionada(null);
+      setAnotacoes("");
 
-  // Formatar data de hoje no mesmo padrão dos registros
-  const hojeFormatado = new Date();
-  const dataHoje = hojeFormatado.toISOString().split("T")[0]; // yyyy-mm-dd
+    } catch (error) {
+      console.error("Erro ao salvar emoção:", error);
+      setMensagemErro("Erro ao salvar emoção. Tente novamente.");
+      setMensagemSucesso("");
+    }
+  };
 
-  // Verificar se já existe uma emoção registrada hoje
-  const docExistente = snapshot.docs.find(doc => {
-    const dataRegistro = doc.data().data.toDate().toISOString().split("T")[0];
-    return dataRegistro === dataHoje;
-  });
-
-  if (docExistente) {
-    // Atualiza o documento existente
-    const docRef = doc(db, "usuarios", user.uid, "emocoes", docExistente.id);
-    await setDoc(docRef, {
-      emocao: emocaoSelecionada,
-      anotacoes: anotacoes,
-      data: new Date()
-    });
-    setMensagemSucesso("Emoção atualizada com sucesso!");
-  } else {
-    // Cria novo documento
-    await addDoc(emocoesRef, {
-      emocao: emocaoSelecionada,
-      anotacoes: anotacoes,
-      data: new Date()
-    });
-    setMensagemSucesso("Emoção registrada com sucesso!");
-  }
-
-  setMensagemErro("");
-  setEmocaoSelecionada(null);
-  setAnotacoes("");
-} catch (error) {
-  console.error("Erro ao salvar emoção:", error);
-  setMensagemErro("Erro ao salvar emoção. Tente novamente.");
-  setMensagemSucesso("");
-}
-
-};
-
+  // Limpa os campos ao cancelar
   const handleCancelar = () => {
     setEmocaoSelecionada(null);
     setAnotacoes("");
   };
 
- const handleSelecionar = (emocao) => {
+  // Atualiza a emoção selecionada
+  const handleSelecionar = (emocao) => {
     setEmocaoSelecionada(emocao);
     console.log("Emoção selecionada:", emocao);
   };
 
-
   return (
-   <div className="nova-emocao-container">
-    <h2 className="data-hoje">{hoje}</h2>
-    <BotaoVoltar />
-    <h3 className="hoje-sinto"> Hoje eu me sinto...</h3>
+    <div className="nova-emocao-container">
+      {/* Exibe a data atual */}
+      <h2 className="data-hoje">{hoje}</h2>
 
-     <BarraEmocoes
-        onSelecionar={setEmocaoSelecionada}
+      <BotaoVoltar />
+
+      <h3 className="hoje-sinto">Hoje eu me sinto...</h3>
+
+      {/* Barra de seleção de emoções */}
+      <BarraEmocoes
+        onSelecionar={handleSelecionar}
         selecionado={emocaoSelecionada}
       />
-     <CampoAnotacao value={anotacoes} onChange={(e) => setAnotacoes(e.target.value)} />
 
+      {/* Campo de anotação */}
+      <CampoAnotacao
+        value={anotacoes}
+        onChange={(e) => setAnotacoes(e.target.value)}
+      />
+
+      {/* Botões de ação: confirmar ou cancelar */}
       <BotoesAcoes
         onConfirmar={handleConfirmar}
         onCancelar={handleCancelar}
       />
 
-       {mensagemErro && <div className="alert erro-alert">{mensagemErro}</div>}
-       {mensagemSucesso && <div className="alert sucesso-alert">{mensagemSucesso}</div>}
+      {/* Mensagens de feedback */}
+      {mensagemErro && <div className="alert erro-alert">{mensagemErro}</div>}
+      {mensagemSucesso && <div className="alert sucesso-alert">{mensagemSucesso}</div>}
 
-     <svg
+      {/* SVG decorativo azul */}
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"
         height="850"
@@ -136,7 +160,8 @@ const NovaEmocao = () => {
           fill="#02C5C6"
         />
       </svg>
-        
+
+      {/* SVG decorativo verde */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="700"
@@ -152,7 +177,7 @@ const NovaEmocao = () => {
           fill="#B8DE6F"
         />
       </svg>
-   </div>
+    </div>
   );
 };
 

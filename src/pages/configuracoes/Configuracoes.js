@@ -5,23 +5,39 @@ import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
 import { Menu } from '../../components/menu/Menu';
 import '../../pages/configuracoes/style.css';
 
+/**
+ * Componente Configuracoes
+ *
+ * Tela de configurações que oferece:
+ * - Opção de logout
+ * - Navegação de retorno
+ * - Elementos visuais SVG decorativos
+ * - Menu lateral (condicional)
+ *
+ * @returns {JSX.Element} Tela de configurações do usuário
+ */
 export function Configuracoes() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(false); // Controla exibição do menu lateral
 
   return (
     <div className="svg-container">
+      {/* Botão para retornar à tela anterior */}
       <BotaoVoltar />
 
+      {/* Conteúdo principal da tela de configurações */}
       <div className="config-conteudo">
         <h2 className="titulo-config">Configurações</h2>
 
+        {/* Botão de logout do usuário */}
         <div className="logout-container">
           <LogoutButton />
         </div>
       </div>
 
+      {/* Exibe o menu lateral se showNav for true */}
       {showNav && <Menu />}
 
+      {/* SVG decorativo orgânico (azul) ao fundo */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"
@@ -38,6 +54,7 @@ export function Configuracoes() {
         />
       </svg>
 
+      {/* SVG decorativo orgânico (verde) ao fundo */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="700"

@@ -1,35 +1,54 @@
+/* 
+  Estilização do contêiner da barra de emoções
+  - Usa flexbox para organizar os botões
+  - Espaçamento e visual agradável com sombra e arredondamento
+*/
 .barra-emocoes {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  background: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  margin: 20px auto;
-  max-width: 50%;
-  z-index: 4;
-  position: relative;
-  top: 10vh;
+  display: flex; /* Layout flexível horizontal */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  flex-wrap: wrap; /* Permite quebra de linha dos botões */
+  gap: 10px; /* Espaço entre os botões */
+  background: white; /* Fundo branco */
+  padding: 10px 20px; /* Espaçamento interno */
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+  margin: 20px auto; /* Centraliza horizontalmente na página */
+  max-width: 50%; /* Largura máxima limitada */
+  z-index: 4; /* Prioridade na sobreposição */
+  position: relative; /* Posicionamento relativo para controle */
+  top: 10vh; /* Empurra o elemento para baixo da tela */
 }
 
+/* 
+  Estilo dos botões com emoji
+  - Remove aparência padrão de botão
+  - Aumenta tamanho da fonte para emojis visíveis
+*/
 .emoji-botao {
-  background: none;
-  border: none;
-  font-size: 32px;
-  cursor: pointer;
-  transition: transform 0.2s;
+  background: none; /* Remove fundo do botão */
+  border: none; /* Remove borda */
+  font-size: 32px; /* Tamanho grande para o emoji */
+  cursor: pointer; /* Mostra cursor de clique */
+  transition: transform 0.2s; /* Animação suave ao interagir */
 }
 
+/* 
+  Aumenta o emoji ao passar o mouse para efeito visual
+*/
 .emoji-botao:hover {
-  transform: scale(1.8);
+  transform: scale(1.8); /* Expande o emoji */
 }
 
+/* 
+  Garante que o emoji fique alinhado corretamente
+*/
 .emoji {
-  display: inline-block;
+  display: inline-block; /* Comporta-se como elemento em linha com controle de box */
 }
 
+/* 
+  Emoção selecionada recebe destaque visual
+*/
 .emoji-botao.selecionado {
-  transform: scale(2);
+  transform: scale(2); /* Fica ainda maior quando selecionado */
 }
