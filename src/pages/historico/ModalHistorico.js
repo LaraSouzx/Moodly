@@ -1,16 +1,16 @@
 import React from "react";
-import "./Modal.css";
-import { EMOCOES } from "../../../src/components/barraEmocoes/BarraEmocoes";
+import "./Modal.css"; // ou onde estiver seu CSS
 
 const ModalHistorico = ({ data, emocao, texto, onClose }) => {
-  const emoji = EMOCOES.find((e) => e.nome === emocao)?.emoji;
   return (
     <div className="modal-overlay">
-      <div className="modal-conteudo">
-        <button onClick={onClose} className="fechar">✖</button>
-        <h3>{data}</h3>
-        <h1>{emoji} {emocao}</h1>
-        <p>{texto}</p>
+      <div className="modal-content">
+        <button className="close-button" onClick={onClose}>X</button>
+
+        <h2>Detalhes do Dia</h2>
+        <p><strong>Data:</strong> {data}</p>
+        <p><strong>Emoção:</strong> {emocao}</p>
+        <p><strong>Anotação:</strong> {texto ? texto : "Sem anotação."}</p>
       </div>
     </div>
   );

@@ -145,7 +145,7 @@ const CalendarioHistorico = () => {
         <ModalHistorico
           data={selecionado.data}
           emocao={selecionado.emocao}
-          texto={selecionado.texto}
+          anotacoes={selecionado.anotacoes}
           onClose={() => setSelecionado(null)} // Fecha o modal
         />
       )}
