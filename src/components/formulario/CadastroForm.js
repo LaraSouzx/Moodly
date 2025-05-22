@@ -71,8 +71,9 @@ export default function CadastroForm(){
        
                <button className="cadastro-button" onClick={handleCadastro}>Cadastrar</button>
 
-                {erro && <p style={{ color: 'red' }}>{erro}</p>}
-                {sucesso && <p style={{ color: 'green' }}>{sucesso}</p>}
+                {erro && <div className="alert erro-alert">{erro}</div>}
+                {sucesso && <div className="alert sucesso-alert">{sucesso}</div>}
+
        
                <div className="login-footer">
                  <span className="text-muted">Já tem uma conta? </span>
