@@ -9,14 +9,17 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import BotaoMenu from "../../components/menu/BotaoMenu";
 import { db } from "../../firebaseConfig";
 import { collection, addDoc, doc } from "firebase/firestore";
+import { getDocs, setDoc } from "firebase/firestore";
 import { auth } from "../../firebaseConfig";
-
+import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
 
 
 const NovaEmocao = () => {
    const [emocaoSelecionada, setEmocaoSelecionada] = useState(null);
     const [anotacoes, setAnotacoes] = useState("");
     const [showNav, setShowNav] = useState(false);
+    const [mensagemErro, setMensagemErro] = useState("");
+    const [mensagemSucesso, setMensagemSucesso] = useState("");
     const navigate = useNavigate();
       
     const handleAddEmotion = () => {
@@ -40,26 +43,51 @@ const NovaEmocao = () => {
         return;
       }
     
-      try{
-        //referencia ao doc do usuario
-        const useRef = doc(db, "usuarios", user.uid);
+     try {
+  const userRef = doc(db, "usuarios", user.uid);
+  const emocoesRef = collection(userRef, "emocoes");
 
-        //referencia a subcolecao emocções dentro desse documento
-        const emocoesRef = collection(useRef, "emocoes");
-        
-        //add uma nova emocao na subcolecao
-        await addDoc(emocoesRef, {
-          emocao: emocaoSelecionada,
-          anotacoes: anotacoes,
-          data: new Date()
-        });
-         alert("Emoção registrada com sucesso!");
-        setEmocaoSelecionada(null);
-        setAnotacoes("");
-      }catch (error) {
-        console.error("Erro ao salvar emoção:", error);
-        alert("Erro ao salvar emoção. Tente novamente.");
-      }
+  // Obter todos os registros de emoção do usuário
+  const snapshot = await getDocs(emocoesRef);
+
+  // Formatar data de hoje no mesmo padrão dos registros
+  const hojeFormatado = new Date();
+  const dataHoje = hojeFormatado.toISOString().split("T")[0]; // yyyy-mm-dd
+
+  // Verificar se já existe uma emoção registrada hoje
+  const docExistente = snapshot.docs.find(doc => {
+    const dataRegistro = doc.data().data.toDate().toISOString().split("T")[0];
+    return dataRegistro === dataHoje;
+  });
+
+  if (docExistente) {
+    // Atualiza o documento existente
+    const docRef = doc(db, "usuarios", user.uid, "emocoes", docExistente.id);
+    await setDoc(docRef, {
+      emocao: emocaoSelecionada,
+      anotacoes: anotacoes,
+      data: new Date()
+    });
+    setMensagemSucesso("Emoção atualizada com sucesso!");
+  } else {
+    // Cria novo documento
+    await addDoc(emocoesRef, {
+      emocao: emocaoSelecionada,
+      anotacoes: anotacoes,
+      data: new Date()
+    });
+    setMensagemSucesso("Emoção registrada com sucesso!");
+  }
+
+  setMensagemErro("");
+  setEmocaoSelecionada(null);
+  setAnotacoes("");
+} catch (error) {
+  console.error("Erro ao salvar emoção:", error);
+  setMensagemErro("Erro ao salvar emoção. Tente novamente.");
+  setMensagemSucesso("");
+}
+
 };
 
   const handleCancelar = () => {
@@ -76,6 +104,7 @@ const NovaEmocao = () => {
   return (
    <div className="nova-emocao-container">
     <h2 className="data-hoje">{hoje}</h2>
+    <BotaoVoltar />
     <h3 className="hoje-sinto"> Hoje eu me sinto...</h3>
 
      <BarraEmocoes
@@ -89,8 +118,9 @@ const NovaEmocao = () => {
         onCancelar={handleCancelar}
       />
 
-       <BotaoMenu onClick={() => setShowNav(!showNav)} />
-       {showNav && <Menu/>}
+       {mensagemErro && <div className="alert erro-alert">{mensagemErro}</div>}
+       {mensagemSucesso && <div className="alert sucesso-alert">{mensagemSucesso}</div>}
+
      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="750"

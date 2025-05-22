@@ -68,13 +68,12 @@ export default function CadastroForm(){
                    <input type="password" placeholder="Digite uma senha"  value={senha} onChange={(e) => setSenha(e.target.value)}/>
                  </div>
                </div>
-       
+               
                <button className="cadastro-button" onClick={handleCadastro}>Cadastrar</button>
 
                 {erro && <div className="alert erro-alert">{erro}</div>}
                 {sucesso && <div className="alert sucesso-alert">{sucesso}</div>}
 
-       
                <div className="login-footer">
                  <span className="text-muted">Já tem uma conta? </span>
                  <Link to="/" className="text-link">Entre agora</Link>
