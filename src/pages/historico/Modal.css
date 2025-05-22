@@ -11,7 +11,7 @@
   z-index: 9999;
 }
 
-.modal-content {
+.meu-modal-content { /* Nome alterado aqui também */
   background-color: #ffffff;
   padding: 30px 25px;
   border-radius: 16px;
@@ -41,13 +41,13 @@
   color: #333;
 }
 
-.modal-content h2 {
+.meu-modal-content h2 {
   margin-top: 0;
   font-size: 22px;
   color: #02C5C6;
 }
 
-.modal-content p {
+.meu-modal-content p {
   margin: 12px 0;
   font-size: 16px;
   color: #333;

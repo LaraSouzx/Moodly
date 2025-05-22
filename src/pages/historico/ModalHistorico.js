@@ -17,6 +17,8 @@ const formatarDataModal = (dataStr) => {
  *
  * Exibe um modal com detalhes de uma entrada do histórico de emoções.
  * Mostra a data, a emoção selecionada e anotações do dia.
+ * Utiliza a classe personalizada "meu-modal-content" para evitar conflito
+ * com a classe padrão do Bootstrap ("modal-content").
  *
  * @param {string} data - Data da entrada (formato ISO: "YYYY-MM-DD")
  * @param {string} emocao - Emoção registrada
@@ -28,8 +30,8 @@ const formatarDataModal = (dataStr) => {
 const ModalHistorico = ({ data, emocao, anotacoes, onClose }) => {
   return (
     <div className="modal-overlay"> {/* Camada de fundo escurecida */}
-      <div className="modal-content"> {/* Caixa central com os detalhes */}
-        
+      <div className="meu-modal-content"> {/* Caixa central com os detalhes */}
+
         {/* Botão de fechar o modal */}
         <button className="close-button" onClick={onClose}>X</button>
 
