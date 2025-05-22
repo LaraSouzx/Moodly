@@ -2,7 +2,7 @@ import BotaoMenu from "../../components/menu/BotaoMenu";
 import {Menu } from '../../components/menu/Menu';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Calendario from '../../components/Calendario/Calendario'; 
+import CalendarioHistorico from '../../components/Calendario/HistoricoCalendario'; 
 import '../historico/style.css';
 
 export function Historico(){
@@ -13,7 +13,7 @@ export function Historico(){
         <div className="historico-container">
 
             <h2 className="nome-pagina">Histórico</h2>
-             <Calendario/>
+             <CalendarioHistorico/>
 
              <BotaoMenu onClick={() => setShowNav(!showNav)} />
             {showNav && <Menu/>}
