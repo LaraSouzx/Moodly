@@ -4,13 +4,14 @@ import { getFirestore } from "firebase/firestore";
 
 //configurações do firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyAehPmnjSAF7X-KPna7pdrn5D9GqhEGIVY",
-  authDomain: "moodly-9428b.firebaseapp.com",
-  projectId: "moodly-9428b",
-  storageBucket: "moodly-9428b.firebasestorage.app",
-  messagingSenderId: "914210826067",
-  appId: "1:914210826067:web:a55eb053e7fbc557d4a3a6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
+
 
 //inicialiar o firebase
  export const app = initializeApp(firebaseConfig);
