@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import  { useState } from 'react';
 import LogoutButton from '../../components/formulario/LogonButton';
 import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
 import { Menu } from '../../components/menu/Menu';

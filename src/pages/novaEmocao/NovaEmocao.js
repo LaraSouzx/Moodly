@@ -22,8 +22,7 @@ const NovaEmocao = () => {
   // Estados da emoção selecionada, anotação, navegação e mensagens
   const [emocaoSelecionada, setEmocaoSelecionada] = useState(null);
   const [anotacoes, setAnotacoes] = useState("");
-  const [showNav, setShowNav] = useState(false);
-  const [mensagemErro, setMensagemErro] = useState("");
+   const [mensagemErro, setMensagemErro] = useState("");
   const [mensagemSucesso, setMensagemSucesso] = useState("");
   const navigate = useNavigate();
 

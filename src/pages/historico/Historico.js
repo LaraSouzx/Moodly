@@ -13,9 +13,7 @@ import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
  * @returns {JSX.Element} Interface de visualização do histórico emocional
  */
 export function Historico() {
-  const [showNav, setShowNav] = useState(false); // Controle do menu lateral
-  const navigate = useNavigate(); // Hook de navegação (não utilizado aqui, mas já importado)
-
+ 
   return (
     <div className="historico-container">
       
