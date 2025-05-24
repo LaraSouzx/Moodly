@@ -16,8 +16,7 @@ import '../../pages/configuracoes/style.css';
  * @returns {JSX.Element} Tela de configurações do usuário
  */
 export function Configuracoes() {
-  const [showNav, setShowNav] = useState(false); // Controla exibição do menu lateral
-
+  
   return (
     <div className="svg-container">
       {/* Botão para retornar à tela anterior */}

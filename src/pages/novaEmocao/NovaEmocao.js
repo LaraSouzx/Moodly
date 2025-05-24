@@ -24,7 +24,7 @@ const NovaEmocao = () => {
   const [anotacoes, setAnotacoes] = useState("");
    const [mensagemErro, setMensagemErro] = useState("");
   const [mensagemSucesso, setMensagemSucesso] = useState("");
-  const navigate = useNavigate();
+ 
 
   // Data formatada de hoje (exibição)
   const hoje = new Date().toLocaleDateString("pt-BR", {

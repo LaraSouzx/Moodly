@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import CalendarioHistorico from '../../components/Calendario/HistoricoCalendario'; 
 import '../historico/style.css';
 import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
