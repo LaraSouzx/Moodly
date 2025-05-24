@@ -32,9 +32,6 @@ export function Configuracoes() {
         </div>
       </div>
 
-      {/* Exibe o menu lateral se showNav for true */}
-      {showNav && <Menu />}
-
       {/* SVG decorativo orgânico (azul) ao fundo */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
