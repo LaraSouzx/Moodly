@@ -3,7 +3,6 @@ import "../novaEmocao/style.css";
 import BarraEmocoes from "../../components/barraEmocoes/BarraEmocoes";
 import CampoAnotacao from "../../components/campoAnotacao/Anotacao";
 import BotoesAcoes from "../../components/botoesAcoes/BotoesAcao";
-import { useNavigate } from "react-router-dom";
 import { db, auth } from "../../firebaseConfig";
 import { collection, addDoc, doc, getDocs, setDoc } from "firebase/firestore";
 import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";
