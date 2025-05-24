@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { signOut } from 'firebase/auth'; // Função de logout do Firebase Authentication
 import { useNavigate } from 'react-router-dom'; // Hook de navegação
 import { auth } from '../../firebaseConfig'; // Configuração do Firebase

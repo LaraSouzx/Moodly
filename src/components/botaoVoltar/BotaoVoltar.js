@@ -1,6 +1,4 @@
 // src/components/BotaoVoltar.js
-
-import React from "react";
 import { useNavigate } from "react-router-dom"; // Hook de navegação do React Router
 import "./style.css";
 

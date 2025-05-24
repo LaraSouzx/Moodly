@@ -1,5 +1,3 @@
-import { auth } from "../../firebaseConfig";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth"; // (Imports não utilizados neste arquivo)
 import '../logins/style.css'; // Estilo da tela de login/cadastro
 import logo from '../../assets/logo.png'; // Logo da aplicação
 import CadastroForm from '../../components/formulario/CadastroForm'; // Componente de formulário de cadastro

@@ -1,6 +1,4 @@
-import BotaoMenu from "../../components/menu/BotaoMenu";
-import { Menu } from '../../components/menu/Menu';
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CalendarioHistorico from '../../components/Calendario/HistoricoCalendario'; 
 import '../historico/style.css';

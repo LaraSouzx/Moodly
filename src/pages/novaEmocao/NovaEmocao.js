@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../novaEmocao/style.css";
 import BarraEmocoes from "../../components/barraEmocoes/BarraEmocoes";
 import CampoAnotacao from "../../components/campoAnotacao/Anotacao";
 import BotoesAcoes from "../../components/botoesAcoes/BotoesAcao";
-import { Menu } from '../../components/menu/Menu';
 import { useNavigate } from "react-router-dom";
-import { GiHamburgerMenu } from 'react-icons/gi';
-import BotaoMenu from "../../components/menu/BotaoMenu";
 import { db, auth } from "../../firebaseConfig";
 import { collection, addDoc, doc, getDocs, setDoc } from "firebase/firestore";
 import BotaoVoltar from "../../components/botaoVoltar/BotaoVoltar";

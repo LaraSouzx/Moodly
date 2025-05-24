@@ -1,5 +1,5 @@
 import { auth } from "../../firebaseConfig";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth"; // Login com conta Google
+import { GoogleAuthProvider, signInWithPopup} from "firebase/auth"; // Login com conta Google
 import '../logins/style.css'; // Estilização da tela de login
 import logo from '../../assets/logo.png'; // Logo da aplicação
 import LoginForm from '../../components/formulario/LoginForm'; // Formulário de login por e-mail/senha

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { GiHamburgerMenu } from "react-icons/gi"; // Ícone de menu (hambúrguer)
 import "../menu/style.css"; // Estilo do botão
 

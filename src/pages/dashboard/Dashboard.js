@@ -3,7 +3,7 @@ import Calendario from '../../components/Calendario/Calendario';
 import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Menu } from '../../components/menu/Menu';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SaudacaoUsuario } from '../../components/SaudacaoUsuario/SaudacaoUsuario';
 
 /**

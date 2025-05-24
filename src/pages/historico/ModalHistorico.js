@@ -1,4 +1,3 @@
-import React from "react";
 import "./Modal.css"; // Estilo do modal (ajuste o caminho conforme necessário)
 
 /**
